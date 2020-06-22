@@ -1,0 +1,52 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+@model List<Wedding>
+
+<div class="text-center">
+    <div class="jumbotron">
+        <div class="mx-auto" style="width: 900px;">
+            <h1 class="display">Hello @ViewBag.User.FirstName! Welcome to Wedding Planner!</h1>
+            <hr>
+        </div>
+        <table class="table table-hover table-striped border border-primary">
+            <thead class="thead bg-primary text-white">
+                <tr>
+                    <th scope="col">Wedding</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Guests</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody class="table-hover">
+                @foreach (Wedding w in Model)
+                {
+                    <tr>
+                        <td scope="col"><a href="/wedding/@w.WeddingId">@w.WedderOne & @w.WedderTwo</a></td>
+                        <td scope="col">@w.Date</td>
+                        <td scope="col">@w.Guests.Count</td>
+                        <td scope="col">
+                            @if(ViewBag.User.UserId == w.Planner.UserId)
+                            {
+                                <a class="btn btn-warning btn-sm" href="/wedding/@w.WeddingId/delete">Cancel</a>
+                            }
+                            else
+                            {
+                                @* Query to see if they are watching *@
+                                if(w.Guests.Any(gl => gl.UserId == ViewBag.User.UserId))
+                                {
+                                    <a class="btn btn-outline-dark btn-sm" asp-action="ToggleStatus" asp-route-weddingId="@w.WeddingId" asp-route-status="leave">Back Out</a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-outline-success btn-sm" asp-action="ToggleStatus" asp-route-weddingId="@w.WeddingId" asp-route-status="join">RSVP</a>
+                                }
+                            }
+                        </td>
+                    </tr>    
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

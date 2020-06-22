@@ -1,0 +1,43 @@
+<div class="mx-auto" style="width: 600px;">
+    <div class="card border-primary mb-3" style="max-width: 32rem;">
+        <div class="text-center">
+            <h5 class="card-header bg-dark text-white">Login</h5>
+        </div>
+        <div class="card-body text-white bg-secondary">
+            @model Login
+            <form asp-action="ProcessLogin" asp-controller="Home" method="post">
+                <div class="row">
+                    <div class="col-4">
+                        <label class="form-group mt-2" asp-for="LoginEmail">Email Address</label>
+                    </div>
+                    <div class="col-7">
+                        <input type="email" class="form-control" asp-for="LoginEmail">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                    </div>
+                    <div class="col-7 text-danger bg-dark mb-2">
+                        <span asp-validation-for="LoginEmail"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <label class="form-group mt-2" asp-for="LoginPassword">Password</label>
+                    </div>
+                    <div class="col-5">
+                        <input type="password" class="form-control" asp-for="LoginPassword">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                    </div>
+                    <div class="col-5 text-danger bg-dark mb-2">
+                        <span asp-validation-for="LoginPassword"></span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary border-dark">Login</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+@model Wedding
+<div class="row">
+    <div class="col-sm-8 offset-sm-2">
+        <div class="card border border-primary mt-5">
+            <div class="card-header bg-primary text-white">@Model.WedderOne's and @Model.WedderTwo's Wedding</div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <p>Planned by: @Model.Planner.FirstName</p>
+                        <p>Date: @Model.Date</p>
+                        <p>Location: @Model.Location</p>
+                        <p>Address: @Model.Address</p>
+                        <div>
+                            <iframe
+                                width="450"
+                                height="250"
+                                frameborder="0" style="border:0"
+                                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD4XOAzAwR9ehNWvcYN_AN_gRvbAbWuT3I&q=@Model.Location" allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <ul class="list-group">
+                            <li class="list-group-item bg-dark text-white">Guests: </li>
+                            @foreach( var g in Model.Guests)
+                            {
+                                <li class="list-group-item">@g.WeddingGuest.FirstName @g.WeddingGuest.LastName</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

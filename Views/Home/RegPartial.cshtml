@@ -1,0 +1,88 @@
+<div class="mx-auto" style="width: 600px;">
+    <div class="card border-primary mb-3" style="max-width: 32rem;">
+        <div class="text-center">
+            <h5 class="card-header bg-dark text-white">Register</h5>
+        </div>
+        <div class="card-body text-white bg-secondary">
+            @model User
+            <form asp-action="ProcessRegistration" asp-controller="Home" method="post">
+                <div class="row">
+                    <div class="col-4">
+                        <label class="form-group mt-2" asp-for="FirstName">First Name</label>
+                    </div>
+                    <div class="col-5">
+                        <input type="text" class="form-control" asp-for="FirstName">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                    </div>
+                    <div class="col-7 text-danger bg-dark mb-2">
+                        <span asp-validation-for="FirstName"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <label class="form-group mt-2" asp-for="LastName">Last Name</label>
+                    </div>
+                    <div class="col-5">
+                        <input type="text" class="form-control" asp-for="LastName">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                    </div>
+                    <div class="col-7 text-danger bg-dark mb-2">
+                        <span asp-validation-for="LastName"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <label class="form-group mt-2" asp-for="Email">Email Address</label>
+                    </div>
+                    <div class="col-7">
+                        <input type="email" class="form-control" asp-for="Email">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                    </div>
+                    <div class="col-7 text-danger bg-dark mb-2">
+                        <span asp-validation-for="Email"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <label class="form-group mt-2" asp-for="Password">Passowrd</label>
+                    </div>
+                    <div class="col-5">
+                        <input type="password" class="form-control" asp-for="Password">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                    </div>
+                    <div class="col-5 text-danger bg-dark mb-2">
+                        <span asp-validation-for="Password"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <label class="form-group mt-2" asp-for="ConfirmPW">Confirm Password</label>
+                    </div>
+                    <div class="col-5">
+                        <input type="password" class="form-control" asp-for="ConfirmPW">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                    </div>
+                    <div class="col-7 text-danger bg-dark mb-2">
+                        <span asp-validation-for="ConfirmPW"></span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary border-dark">Sign Up</button>
+            </form>
+        </div>
+    </div>
+</div>
